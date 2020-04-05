@@ -125,11 +125,14 @@ const Wektor Macierz::operator * (const Wektor & W) const{
 
 std::ostream& operator << (std::ostream &Strm, const Macierz &M)
 {   
-    return Strm << M[0] << std::endl << M[1] << std::endl << M[2] << std::endl;
+    Macierz M1;
+    M1 = M.Transpozycja();
+    return Strm << M1[0] << std::endl << M1[1] << std::endl << M1[2] << std::endl;
 }
 
 std::istream& operator >> (std::istream &Strm, Macierz &M)
 {
     Strm >> M[0] >> M[1] >> M[2];
+    M.Transpozycja();
     return Strm;
 }
