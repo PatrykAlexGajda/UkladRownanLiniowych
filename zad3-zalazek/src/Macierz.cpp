@@ -1,8 +1,8 @@
 #include "Macierz.hh"
 
 Macierz::Macierz(){
-    for(int i = 0; i < 3; i++)
-        for(int j = 0; j < 3; j++){
+    for(int i = 0; i < ROZMIAR; i++)
+        for(int j = 0; j < ROZMIAR; j++){
             tab[i][j] = 0;
         }
 }
@@ -33,30 +33,13 @@ const Macierz Macierz::Transpozycja() const{
 
     Macierz MacTr;
 
-    for(int i = 0; i < 3; i++)
-        for(int j = 0; j < 3; j++){
+    for(int i = 0; i < ROZMIAR; i++)
+        for(int j = 0; j < ROZMIAR; j++){
             MacTr[i][j] = tab[j][i];
         }
 
     return MacTr;
 }
-
-double Macierz::Dopelnienie(double i, double j, double m, double n, double znak){
-    return znak*((i*j)-(m*n));
-}
-
-/*
-
-const Macierz & Macierz::odwrotnosc() const{
-
-    double det = WyznacznikLaplace();
-    Macierz MacDop;
-    
-    MacDop[0][0] = Dopelnienie(tab[1][1], tab[2][2], tab[2][1], tab[1][2], 1);
-    
-}
-
-*/
 
 const Macierz Macierz::Odwrotnosc() const{
 
@@ -77,47 +60,47 @@ const Macierz Macierz::Odwrotnosc() const{
 
     Macierz MacOdw;
 
-    for(int i = 0; i < 3; i++ )
-        for(int j = 0; j < 3; j++){
+    for(int i = 0; i < ROZMIAR; i++ )
+        for(int j = 0; j < ROZMIAR; j++){
             MacOdw[i][j] = (1/det)*MacOdw[i][j];
         }
 
     return MacOdw;
 }
 
-const Macierz Macierz::operator + (const Macierz & M) const{
+Macierz Macierz::operator + (const Macierz & M) const{
     
     Macierz wynik;
-    for(int i=0;i<3;i++)
-        for(int j=0;j<3;j++){
+    for(int i=0;i<ROZMIAR;i++)
+        for(int j=0;j<ROZMIAR;j++){
             wynik[i][j] = tab[i][j] + M[i][j];
         }
     return wynik;
 }
 
-const Macierz Macierz::operator - (const Macierz & M) const{
+Macierz Macierz::operator - (const Macierz & M) const{
 
     Macierz wynik;
-    for(int i=0;i<3;i++)
-        for(int j=0;j<3;j++){
+    for(int i=0;i<ROZMIAR;i++)
+        for(int j=0;j<ROZMIAR;j++){
             wynik[i][j] = tab[i][j] - M[i][j];
         }
     return wynik;
 }
 
-const Macierz Macierz::operator * (const Macierz & M) const{
+Macierz Macierz::operator * (const Macierz & M) const{
     Macierz wynik;
-    for(int j=0;j<3;j++)
-        for(int i=0;i<3;i++){
+    for(int j=0;j<ROZMIAR;j++)
+        for(int i=0;i<ROZMIAR;i++){
             wynik[i][j] = tab[i][0]*M[0][j]+tab[i][1]*M[1][j]+tab[i][2]*M[2][j];
         }
     return wynik;
 }
 
-const Wektor Macierz::operator * (const Wektor & W) const{
+Wektor Macierz::operator * (const Wektor & W) const{
 
     Wektor wynik;
-    for(int i=0;i<3;i++){
+    for(int i=0;i<ROZMIAR;i++){
         wynik[i] = tab[i][0]*W[0] + tab[i][1]*W[1] + tab[i][2]*W[2];
     }
     return wynik;

@@ -3,20 +3,25 @@
 #include "Macierz.hh"
 #include "UkladRownanLiniowych.hh"
 
+int main(){
 
+  std::cout << std::endl << "Start programu " << std::endl << std::endl;
 
-using namespace std;
+  Macierz A;
+  Wektor b;
+  Wektor Rozw;
 
-/*
- * Tu definiujemy pozostale funkcje.
- * Lepiej jednak stworzyc dodatkowy modul
- * i tam je umiescic. Ten przyklad pokazuje
- * jedynie absolutne minimum.
- */
+  std::cin >> A >> b;
 
+  UkladRownanLiniowych UklRown(A, b);
 
-int main()
-{
-  
-  cout << endl << " Start programu " << endl << endl;
+  std::cout << UklRown << std::endl;
+
+  Rozw = UklRown.Oblicz();
+
+  std::cout << "Rozwiazania ukladu rownan to: " << std::endl;
+
+  std::cout << Rozw << std::endl;
+
+  return 0;
 }

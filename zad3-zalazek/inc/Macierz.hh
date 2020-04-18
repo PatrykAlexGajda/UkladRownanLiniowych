@@ -31,14 +31,13 @@ class Macierz {
       return tab[ind1][ind2];
     }
 
-    double Dopelnienie(double i, double j, double m, double n, double znak);
     double WyznacznikLaplace() const;
     const Macierz Transpozycja() const;
     const Macierz Odwrotnosc() const;
-    const Macierz operator + (const Macierz & W) const; 
-    const Macierz operator - (const Macierz & W) const; 
-    const Macierz operator * (const Macierz & W) const; 
-    const Wektor operator * (const Wektor & W) const;
+    Macierz operator + (const Macierz & W) const; 
+    Macierz operator - (const Macierz & W) const; 
+    Macierz operator * (const Macierz & W) const; 
+    Wektor operator * (const Wektor & W) const;
 };
 
 std::istream& operator >> (std::istream &Strm, Macierz &M);

@@ -35,14 +35,14 @@ class Wektor {
 
     double & operator[] (int indeks);
     
-    const Wektor & operator + (const Wektor & W2) const;
-    const Wektor & operator - (const Wektor & W2) const;
-    Wektor & operator += (const Wektor & W2);
+    Wektor operator + (const Wektor & W2) const;
+    Wektor operator - (const Wektor & W2) const;
+    const Wektor & operator += (const Wektor & W2);
 };
 
-std::istream& operator >> (std::istream &Strm, Wektor &W);
+std::istream & operator >> (std::istream &Strm, Wektor &W);
 
-std::ostream& operator << (std::ostream &Strm, const Wektor &W);
+std::ostream & operator << (std::ostream &Strm, const Wektor &W);
 
 
 #endif
